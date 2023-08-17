@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+#profile {
+  text-align: center;
+  padding: 24px;
+  /*Substitui a alteração de display e margin da img abaixo, contida dentro da div profile.*/
+}
+
+/*Elementos in-line não permitem configuração de margin*/
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+#switch {
+  /* A posição relativa (relative) de uma caixa garante que as suas caixas internas tenha seus posicionamentos limitados a fronteira máxima representada pela caixa de posicionamento absoluto. */
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  /* - Sobreposição de elementos - */
+  position: absolute;
+  /* Com a configuração de top estaremos definindo a porcentagem que um elemento fica abaixo do topo da caixa. Ou seja, a linha abaixo, lê-se '50% abaixo do top' */
+  top: 50%;
+  /* Aqui lê-se '0% de distância da extremidade direita da caixa de fronteira' */
+  left: 0;
+  /* Definimos nos 'layers' em qual camada está a caixa em questão, camadas de sobreposição de elementos */
+  z-index: 1;
+  /* Reajuste a posicionamento da caixa em relação ao seu próprio eixo */
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* Links */
+
+ul {
+  list-style: none;
+  /* Disponibiliza os elementos em um ajuste flexível dentro da lista como um todo */
+  display: flex;
+  /* Disponibiliza os elementos da lista ul em uma única coluna ao invés de linha */
+  flex-direction: column;
+  /* Define o espaço ('gap') entre os elementos da lista ul */
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  /* Alinha os itens da caixa com relação ao eixo vertical */
+  align-items: center;
+  /* Alinha os itens da caixa com relação ao eixo horizontal */
+  justify-content: center;
+  /* O padding é a distância interna entre o conteúdo da caixa (neste caso o link) e suas bordas */
+  padding: 16px 24px;
+  /* RGBA = (Red, Green, Blue, Alpha) onde 255 é a tonalidade mais forte da cor e o alpha define a transparência */
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+  /* Tempo de delay da transição para efeitos sobre a caixa como por exemplo o hover */
+  transition: background 0.5s;
+}
+/* Característica da caixa com relação ao descanso do mouse sobre a mesma */
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+  display: flex;
+  /* Novamente o espaçamento interno da caixa social links */
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
