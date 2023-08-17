@@ -87,11 +87,19 @@ body * {
   z-index: 1;
   /* Reajuste a posicionamento da caixa em relação ao seu próprio eixo */
   transform: translateY(-50%);
+  /* Não precisamos do 'forwards' neste caso pois no escopo desta estilização já possuímos a configuração 'left: 0' */
+  animation: slide-back 0.4s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  /* right: 0;
+  left: initial; */
+  /* forwards mantém as propriedades do final ('to') da animação */
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -168,6 +176,7 @@ footer {
   font-size: 14px;
 }
 
+/* Estamos aqui definindo um comportamento para quando a tela do dispositivo possui um tamanho de no mínimo 700 pixels ou superior a este. */
 @media (min-width: 700px) {
   :root {
     --bg-url: url(./assets/assets/bg-desktop.jpg);
@@ -175,5 +184,24 @@ footer {
 
   .light {
     --bg-url: url(./assets/assets/bg-desktop-light.jpg);
+  }
+}
+
+/* Serão definidas agora as animações na tela */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
